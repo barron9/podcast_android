@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".MainActivity">
 
     <FrameLayout
@@ -12,15 +13,20 @@
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/black"
+        android:background="@color/colorPrimaryDark"
         android:elevation="8dp">
 
         <TextView
             android:id="@+id/tw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:gravity="center_vertical|center_horizontal"
             android:text="...."
-            android:textColor="@color/exo_edit_mode_background_color" />
+            android:textColor="@color/exo_edit_mode_background_color"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
     </FrameLayout>
 
     <ListView

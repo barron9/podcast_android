@@ -72,14 +72,17 @@ public class MainActivity extends AppCompatActivity {
                 if (playbackState == 3) {
                     tw.setText("playing");
 
+
                 } else if (playbackState == 2) {
                     tw.setText("buffering");
+
 
                 }
             }
         });
 
         exoPlayer.setPlayWhenReady(true);
+
 
     }
 
@@ -90,12 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
                 // Do network action in this function
                 try {
-                    Podcast podcast = new Podcast(new URL("http://acikradyo.com.tr/i/rss/Ahsaptan_Betona_Mecidiyeden_Jetona.xml"));
+                    Podcast podcast = new Podcast(new URL("https://karnaval.com/programlar/aragaz/rss"));
                     Log.d("episodes", podcast.getTitle() + ", size: " + podcast.getEpisodes().size());
                     final ArrayList<Playeritem> persons = new ArrayList<Playeritem>();
                     for (Episode episode : podcast.getEpisodes()) {
                         Log.d("episodes", "- " + episode.getTitle() + String.valueOf(episode));
-                        persons.add(new Playeritem(episode.getTitle(), episode.getEnclosure().getURL().toString(), 0));
+                        persons.add(new Playeritem(episode.getTitle() + String.valueOf(episode.getEnclosure().getLength()), episode.getEnclosure().getURL().toString(), 0));
                     }
                     list_pods_to_view(persons);
                 } catch (Exception ex) {
@@ -119,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Subscribe(
-            thread = EventThread.IO,
+            thread = EventThread.NEW_THREAD,
             tags = {
                     @Tag("eat")
             }
