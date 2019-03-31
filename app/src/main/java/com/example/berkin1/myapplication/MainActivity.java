@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.DocumentsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.FrameLayout;
@@ -108,20 +107,20 @@ public class MainActivity extends AppCompatActivity {
                     Elements mElementDataSize = mBlogDocument.select("li[class=list_item list_item_show]");
                     // Locate the content attribute
                     int mElementSize = mElementDataSize.size();
-                    Log.d("episodes", "- elementsize" + String.valueOf(mElementSize) );
+                    Log.d("episodes", "- elementsize" + String.valueOf(mElementSize));
 
                     final ArrayList<Poditem> persons = new ArrayList<Poditem>();
 
                     for (int i = 0; i < mElementSize; i++) {
-                        Elements mElementAuthorName =  mBlogDocument.select("li[class=list_item list_item_show]").eq(i).select("figure[class=thumb_container]").eq(0);
-                        String podcastlink =  mBlogDocument.select("li[class=list_item list_item_show]").eq(i).select("a").attr("href");
+                        Elements mElementAuthorName = mBlogDocument.select("li[class=list_item list_item_show]").eq(i).select("figure[class=thumb_container]").eq(0);
+                        String podcastlink = mBlogDocument.select("li[class=list_item list_item_show]").eq(i).select("a").attr("href");
 
                         String photourl = mElementAuthorName.select("img").attr("src").toString();
                         String podcastname = mElementAuthorName.select("img").attr("alt").toString();
 
-                        Log.d("episodes", " - " +podcastname + " - " + photourl + " - " +  podcastlink);
+                        Log.d("episodes", " - " + podcastname + " - " + photourl + " - " + podcastlink);
 
-                        persons.add(new Poditem(podcastname , "https://karnaval.com"+podcastlink+"/rss", photourl));
+                        persons.add(new Poditem(podcastname, "https://karnaval.com" + podcastlink + "/rss", photourl));
 
 
                     }
@@ -168,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void list_pods_to_view(final ArrayList<Playeritem> values) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
