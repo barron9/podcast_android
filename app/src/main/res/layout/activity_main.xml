@@ -35,8 +35,11 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="120dp"
         android:layout_marginBottom="80dp"
+        android:background="@android:color/black"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        tools:layout_editor_absoluteY="8dp"
+        android:divider="#FFCC00"
+        android:dividerHeight="4px"/>
 
     <ListView
         android:id="@+id/lwh"

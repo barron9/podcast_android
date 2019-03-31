@@ -29,6 +29,7 @@
                 android:id="@+id/person_name_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/exo_edit_mode_background_color"
                 android:textSize="16sp" />
 
             <TextView
