@@ -1,4 +1,4 @@
-package com.example.berkin1.myapplication.Player;
+package com.example.berkin1.myapplication.Pods;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -11,23 +11,24 @@ import android.widget.TextView;
 
 import com.example.berkin1.myapplication.R;
 import com.example.berkin1.myapplication.RxBus;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class Playeradapter extends ArrayAdapter<Playeritem> {
+public class Podadapter extends ArrayAdapter<Poditem> {
 
     private final LayoutInflater inflater;
     private final Context context;
-    private final ArrayList<Playeritem> persons;
+    private final ArrayList<Poditem> persons;
     Typeface custom_font;
     private ViewHolder holder;
 
-    public Playeradapter(Context context, ArrayList<Playeritem> persons) {
+    public Podadapter(Context context, ArrayList<Poditem> persons) {
         super(context, 0, persons);
         this.context = context;
         this.persons = persons;
         inflater = LayoutInflater.from(context);
-        custom_font = Typeface.createFromAsset(context.getAssets(), "fonts/md.otf");
+        custom_font = Typeface.createFromAsset(context.getAssets(), "fonts/md.ttf");
 
     }
 
@@ -37,7 +38,7 @@ public class Playeradapter extends ArrayAdapter<Playeritem> {
     }
 
     @Override
-    public Playeritem getItem(int position) {
+    public Poditem getItem(int position) {
         return persons.get(position);
     }
 
@@ -51,7 +52,7 @@ public class Playeradapter extends ArrayAdapter<Playeritem> {
 
         if (convertView == null) {
 
-            convertView = inflater.inflate(R.layout.list_view_item, null);
+            convertView = inflater.inflate(R.layout.list_view_item2, null);
 
             holder = new ViewHolder();
             holder.personImage = (ImageView) convertView.findViewById(R.id.person_image);
@@ -64,9 +65,10 @@ public class Playeradapter extends ArrayAdapter<Playeritem> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        final Playeritem person = persons.get(position);
+        final Poditem person = persons.get(position);
         if (person != null) {
-            holder.personImage.setImageResource(person.getPhotoId());
+            Picasso.with(context).load(person.getPhotoId()).into(holder.personImage);
+
             holder.personNameLabel.setText(person.getName());
 
             holder.personNameLabel.setTypeface(custom_font);
@@ -74,7 +76,7 @@ public class Playeradapter extends ArrayAdapter<Playeritem> {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    RxBus.get().post("eat", person.getAddress());
+                    RxBus.get().post("pullforpodcast", person.getAddress());
                 }
             });
         }

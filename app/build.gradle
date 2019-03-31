@@ -26,6 +26,8 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.8.4'
     compile 'com.icosillion.podengine:podengine:2.2'
     compile 'com.hwangjr.rxbus:rxbus:1.0.6'
+    implementation 'org.jsoup:jsoup:1.11.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

@@ -1,18 +1,18 @@
-package com.example.berkin1.myapplication.Player;
+package com.example.berkin1.myapplication.Pods;
 
-public class Playeritem {
+public class Poditem {
     private String name;
     private final String address;
-    private int photoId;
+    private String photoId;
 
-    public Playeritem(String name,String address,  int photoId) {
+    public Poditem(String name,String address,  String photoId) {
         this.name = name;
         this.address = address;
         this.photoId = photoId;
 
     }
 
-    public int getPhotoId() {
+    public String getPhotoId() {
         return photoId;
     }
 

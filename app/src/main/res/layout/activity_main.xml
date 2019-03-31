@@ -33,8 +33,19 @@
         android:id="@+id/lw"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="120dp"
         android:layout_marginBottom="80dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
+
+    <ListView
+        android:id="@+id/lwh"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="80dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" />
 
 </RelativeLayout>

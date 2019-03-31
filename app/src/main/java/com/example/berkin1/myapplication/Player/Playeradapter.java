@@ -1,6 +1,7 @@
 package com.example.berkin1.myapplication.Player;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ public class Playeradapter extends ArrayAdapter<Playeritem> {
     private final LayoutInflater inflater;
     private final Context context;
     private final ArrayList<Playeritem> persons;
+    Typeface custom_font;
     private ViewHolder holder;
 
     public Playeradapter(Context context, ArrayList<Playeritem> persons) {
@@ -25,6 +27,8 @@ public class Playeradapter extends ArrayAdapter<Playeritem> {
         this.context = context;
         this.persons = persons;
         inflater = LayoutInflater.from(context);
+        custom_font = Typeface.createFromAsset(context.getAssets(), "fonts/md.ttf");
+
     }
 
     @Override
@@ -64,11 +68,13 @@ public class Playeradapter extends ArrayAdapter<Playeritem> {
         if (person != null) {
             holder.personImage.setImageResource(person.getPhotoId());
             holder.personNameLabel.setText(person.getName());
+
+            holder.personNameLabel.setTypeface(custom_font);
             holder.personAddressLabel.setText(person.getAddress());
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    RxBus.get().post("eat",person.getAddress());
+                    RxBus.get().post("eat", person.getAddress());
                 }
             });
         }
